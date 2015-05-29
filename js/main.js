@@ -85,42 +85,29 @@ function getNextId() {
 }
 
 $('#btn_criarLembrete').click(function(){
--	var now = new Date();
--//	var now2 = now.getHours();
+	var now = new Date().getTime();
+	
+	var next_time = new Date(now + 10*1000);// 10 segundos
+	
+	var id = getNextId();
+	
+	var numero = $("#busca_numero").val();
+	console.log(numero);
+	
+	var rua = $("#busca_rua").val();
+	var dadosRua = buscaRuaPorNumero(rua, numero);
+	if (dadosRua) {
+		console.log(dadosRua);
 
--//	var next_time = new Date(now);// 10 segundos
-
--//	var time = [60];
-   //     time.push(dadosRua.HORACOLETA.trim());
-        var elemento = dadosRua.HORACOLETA.trim();
-        elemento.split('');
- 
-        var hour = elemento[9] + elemento[10];
-        var a = parseInt(hour) + "<br>";
-
-	now.setHours(a);
-
-
-
--	var id = getNextId();
--	
--	var numero = $("#busca_numero").val();
--	console.log(numero);
--	
--	var rua = $("#busca_rua").val();
--	var dadosRua = buscaRuaPorNumero(rua, numero);
--	if (dadosRua) {
--		console.log(dadosRua);
--
--		window.plugin.notification.local.add({
--			id:      id,
--			title:   'Lembrete de coleta de lixo.',
--			message: 'Não esqueca de recolher seu lixo. Previsão de coleta para ' + dadosRua.HORACOLETA.trim().toLowerCase() + ".",
--			autoCancel: true,
--			sound: 'TYPE_ALARM',
--			led: '01A552',
--			date:    now
--		});
--		alert("Lembrete criado com sucesso!");
--	}
--});
+		window.plugin.notification.local.add({
+			id:      id,
+			title:   'Lembrete de coleta de lixo.',
+			message: 'Não esqueca de recolher seu lixo. Previsão de coleta para ' + dadosRua.HORACOLETA.trim().toLowerCase() + ".",
+			autoCancel: true,
+			sound: 'TYPE_ALARM',
+			led: '01A552',
+			date:    next_time
+		});
+		alert("Lembrete criado com sucesso!");
+	}
+});
