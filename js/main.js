@@ -85,10 +85,23 @@ function getNextId() {
 }
 
 $('#btn_criarLembrete').click(function(){
--	var now = new Date().getTime();
--	
--	var next_time = new Date(now + 10*1000);// 10 segundos
--	
+-	var now = new Date();
+-//	var now2 = now.getHours();
+
+-//	var next_time = new Date(now);// 10 segundos
+
+-//	var time = [60];
+   //     time.push(dadosRua.HORACOLETA.trim());
+        var elemento = dadosRua.HORACOLETA.trim();
+        elemento.split('');
+ 
+        var hour = elemento[9] + elemento[10];
+        var a = parseInt(hour) + "<br>";
+
+	now.setHours(a);
+
+
+
 -	var id = getNextId();
 -	
 -	var numero = $("#busca_numero").val();
@@ -106,7 +119,7 @@ $('#btn_criarLembrete').click(function(){
 -			autoCancel: true,
 -			sound: 'TYPE_ALARM',
 -			led: '01A552',
--			date:    next_time
+-			date:    now
 -		});
 -		alert("Lembrete criado com sucesso!");
 -	}
