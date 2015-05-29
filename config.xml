@@ -5,10 +5,10 @@
 		id              = "br.com.diariodolixo"
 		version         = "1.0.0">
 
-	<name>Diario do Lixo Poa</name>
+	<name>Hora do Lixo    </name>
 
 	<description>
-		Diario do Lixo Poa
+		Hora do Lixo    
 	</description>
 
 	<gap:platforms>
